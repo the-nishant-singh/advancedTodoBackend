@@ -3,13 +3,12 @@ import * as express from 'express';
 import * as status from 'http-status';
 import * as StandardError from 'standard-error';
 import * as jwt from 'jsonwebtoken';
-import validator from 'validator';
-import { config } from '../../config'
-import { User, } from "../../db"
+import { config } from '../../config';
+import { User, } from "../../db";
 import { getJwtPayload, validateRegisterFields } from './helpers';
 
 //fiebase admin service
-import { firebaseService } from '../../services/firebaseService'
+import { firebaseService } from '../../services/firebaseService';
 
 export class AuthRoutes {
   static JWT_SECRET = config.JWT_SECRET || 'i am a tea pot';
