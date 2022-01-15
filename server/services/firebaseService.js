@@ -184,6 +184,23 @@ var FirebaseAdminService = /** @class */ (function () {
                 }
             });
         }); };
+        this.sendResetEmail = function (email) { return __awaiter(_this, void 0, void 0, function () {
+            var err_7;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, auth.sendPasswordResetEmail(email)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/, { message: 'Email Sent!' }];
+                    case 2:
+                        err_7 = _a.sent();
+                        throw new StandardError({ message: err_7.message, code: status.CONFLICT });
+                    case 3: return [2 /*return*/];
+                }
+            });
+        }); };
     }
     return FirebaseAdminService;
 }());

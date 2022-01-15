@@ -122,6 +122,35 @@ var AuthRoutes = /** @class */ (function () {
             });
         });
     };
+    AuthRoutes.sendResetEmail = function (req, res, next) {
+        return __awaiter(this, void 0, void 0, function () {
+            var email, user, data, error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        email = req.body.email;
+                        if (!email) {
+                            throw new StandardError({ message: 'Email is requried ', code: status.UNPROCESSABLE_ENTITY });
+                        }
+                        return [4 /*yield*/, db_1.User.findOne({ email: email })];
+                    case 1:
+                        user = _a.sent();
+                        if (!user) {
+                            throw new StandardError({ message: 'Invalid email ', code: status.CONFLICT });
+                        }
+                        data = firebaseService_1.firebaseService.sendResetEmail(email);
+                        res.json(data);
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_3 = _a.sent();
+                        next(error_3);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
     AuthRoutes.JWT_SECRET = config_1.config.JWT_SECRET || 'i am a tea pot';
     return AuthRoutes;
 }());
