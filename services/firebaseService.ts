@@ -100,6 +100,15 @@ class FirebaseAdminService {
      throw new StandardError({ message: err.message, code: status.CONFLICT });
     }
   }
+
+  sendResetEmail = async ( email: string ) => {
+    try{
+      await auth.sendPasswordResetEmail(email)
+      return { message: 'Email Sent!' }
+     }catch(err){
+      throw new StandardError({ message: err.message, code: status.CONFLICT });
+     }
+  }
 }
 
 export const firebaseService = new FirebaseAdminService();

@@ -7,6 +7,7 @@ class AuthRouter {
     this.router = express.Router();
     this.router.post('/register', AuthRoutes.register);
     this.router.post('/login', AuthRoutes.login);
+    this.router.post('/send-reset-email', AuthRoutes.sendResetEmail);
   }
 }
 

@@ -55,4 +55,21 @@ export class AuthRoutes {
       next(error);
     }
   }
+  public static async sendResetEmail(req: express.Request, res: express.Response, next) {
+
+    try {
+      const email = req.body.email;
+      if (!email) {
+        throw new StandardError({ message: 'Email is requried ', code: status.UNPROCESSABLE_ENTITY });
+      }
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new StandardError({ message: 'Invalid email ', code: status.CONFLICT });
+      }
+      const data = firebaseService.sendResetEmail(email)
+      res.json(data);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
