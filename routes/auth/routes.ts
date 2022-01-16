@@ -11,7 +11,7 @@ import { getJwtPayload, validateRegisterFields } from './helpers';
 import { firebaseService } from '../../services/firebaseService';
 
 export class AuthRoutes {
-  static JWT_SECRET = config.JWT_SECRET || 'i am a tea pot';
+  static JWT_SECRET = config.JWT_SECRET || 'made in india';
 
   public static async register(req: express.Request, res: express.Response, next) {
     try {

@@ -201,6 +201,23 @@ var FirebaseAdminService = /** @class */ (function () {
                 }
             });
         }); };
+        this.updateProfile = function (uid, name) { return __awaiter(_this, void 0, void 0, function () {
+            var err_8;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, admin.auth().updateUser(uid, { displayName: "".concat(name.first, " ").concat(name.last) })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/, { message: 'User Updated!' }];
+                    case 2:
+                        err_8 = _a.sent();
+                        throw new StandardError({ message: err_8.message, code: status.CONFLICT });
+                    case 3: return [2 /*return*/];
+                }
+            });
+        }); };
     }
     return FirebaseAdminService;
 }());

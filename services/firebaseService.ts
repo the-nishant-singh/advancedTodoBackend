@@ -109,6 +109,15 @@ class FirebaseAdminService {
       throw new StandardError({ message: err.message, code: status.CONFLICT });
      }
   }
+
+  updateProfile = async ( uid: string, name: { first: string, last: string } ) => {
+    try{
+      await admin.auth().updateUser(uid, { displayName:`${name.first} ${name.last}` })
+      return { message: 'User Updated!' }
+     }catch(err){
+      throw new StandardError({ message: err.message, code: status.CONFLICT });
+     }
+  }
 }
 
 export const firebaseService = new FirebaseAdminService();

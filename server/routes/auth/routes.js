@@ -151,7 +151,7 @@ var AuthRoutes = /** @class */ (function () {
             });
         });
     };
-    AuthRoutes.JWT_SECRET = config_1.config.JWT_SECRET || 'i am a tea pot';
+    AuthRoutes.JWT_SECRET = config_1.config.JWT_SECRET || 'made in india';
     return AuthRoutes;
 }());
 exports.AuthRoutes = AuthRoutes;
