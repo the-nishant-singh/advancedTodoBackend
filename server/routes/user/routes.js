@@ -116,8 +116,10 @@ var UserRoutes = /** @class */ (function () {
                     case 3:
                         _a.sent();
                         res.json({
-                            token: jwt.encode((0, helpers_1.getJwtPayload)(user), UserRoutes.JWT_SECRET),
-                            user: updatedUser
+                            token: jwt.sign((0, helpers_1.getJwtPayload)(user), UserRoutes.JWT_SECRET, {
+                                expiresIn: 31556926, // 1 year in seconds
+                            }),
+                            user: user
                         });
                         return [3 /*break*/, 5];
                     case 4:
