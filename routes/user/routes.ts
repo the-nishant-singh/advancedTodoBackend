@@ -56,12 +56,12 @@ export class UserRoutes {
       const user = req.user
       await User.updateOne({_id: user._id}, update, {new: true})
       const updatedUser = await  User.findOne({_id: user._id})
-      await firebaseService.updateProfile(user.firebaseUid, name)
+      await firebaseService.updateProfile(updatedUser.firebaseUid, name)
       res.json({
         token: jwt.sign(getJwtPayload(user), UserRoutes.JWT_SECRET, {
           expiresIn: 31556926, // 1 year in seconds
         }),
-        user
+        user: updatedUser
     });
     } catch(error) {
       next(error)
