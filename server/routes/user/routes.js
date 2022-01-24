@@ -112,14 +112,14 @@ var UserRoutes = /** @class */ (function () {
                         return [4 /*yield*/, db_1.User.findOne({ _id: user._id })];
                     case 2:
                         updatedUser = _a.sent();
-                        return [4 /*yield*/, firebaseService_1.firebaseService.updateProfile(user.firebaseUid, name_1)];
+                        return [4 /*yield*/, firebaseService_1.firebaseService.updateProfile(updatedUser.firebaseUid, name_1)];
                     case 3:
                         _a.sent();
                         res.json({
                             token: jwt.sign((0, helpers_1.getJwtPayload)(user), UserRoutes.JWT_SECRET, {
                                 expiresIn: 31556926, // 1 year in seconds
                             }),
-                            user: user
+                            user: updatedUser
                         });
                         return [3 /*break*/, 5];
                     case 4:
